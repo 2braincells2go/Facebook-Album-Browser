@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Facebook-album-browser by dejanstojanovic</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Facebook-album-browser</h1>
+        <h2>jQuery plugin fro browsing public albums of a Facebook account</h2>
+        <a href="https://github.com/dejanstojanovic/Facebook-Album-Browser" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="facebook-album-browser" class="anchor" href="#facebook-album-browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>Facebook-Album-Browser</h1>
+
+<p>Reponsive jQuery plugin for browsing public albums of a Facebook account.
+Plugin is suitable for both desktop and mobile websites.</p>
+
+<h3>
+<a id="what-can-i-do-with-it" class="anchor" href="#what-can-i-do-with-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What can I do with it</h3>
+
+<p>The main purpose of this plugin is to enable to embed and customize phot albums in your website without being limited with Facebook styling. It also allows you to use it as picker as it raises events for clicked album/photo.</p>
+
+<h3>
+<a id="how-to-add-to-a-page" class="anchor" href="#how-to-add-to-a-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to add to a page</h3>
+
+<p>Add a reference to jQuery library, this plugin library and this plugin CSS stylesheet</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s1"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text/css<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s1"><span class="pl-pds">"</span>../src/jquery.fb.albumbrowser.css<span class="pl-pds">"</span></span> /&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s1"><span class="pl-pds">"</span>../src/jquery.fb.albumbrowser.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Simply add a container (div or any other element) and apply the plugin to it.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s1"><span class="pl-pds">"</span>fb-album-container<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+
+<span class="pl-s2">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s1"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s2">    $(<span class="pl-s3">document</span>).ready(<span class="pl-st">function</span> () {</span>
+<span class="pl-s2">        $(<span class="pl-s1"><span class="pl-pds">"</span>.fb-album-container<span class="pl-pds">"</span></span>).FacebookAlbumBrowser({</span>
+<span class="pl-s2">            account<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">"</span>natgeo<span class="pl-pds">"</span></span></span>
+<span class="pl-s2">        });</span>
+<span class="pl-s2">    });</span>
+<span class="pl-s2">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h3>
+<a id="what-are-options-for-plugin" class="anchor" href="#what-are-options-for-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are options for plugin</h3>
+
+<p>The following are options for the plugin which are used to congigure the plugin instance:</p>
+
+<ul>
+<li>
+<strong>account</strong> - Facebook account for which albums and photos will be fetched and displayed. This parameter is mandatory and must be provided in order for plugin to work.</li>
+<li>
+<strong>acessToken</strong> - Access token for accessing non public content for the facebook account.</li>
+<li>
+<strong>showAccountInfo</strong> - Show Facebook account name and icon abowe the browser. Default value is <em>true</em>
+</li>
+<li>
+<strong>showImageCount</strong> - Show number of protos in each album. Default value is <em>true</em>
+</li>
+<li>
+<strong>skipEmptyAlbums</strong> - Skip albums for which plugin was unable to fetch at least one photo. Default value is <em>true</em>
+</li>
+<li>
+<strong>skipAlbums</strong> - List of IDs or names or combined IDs and names of albums which will not be browsed (e.g ["Profile Pictures", "Timeline Photos"]). Default value is <em>[]</em>
+</li>
+<li>
+<strong>lightbox</strong> - Show full size image in a lightbox style when clicked. Default value is <em>true</em>
+</li>
+</ul>
+
+<h3>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h3>
+
+<p>The following are events raised by plugin:</p>
+
+<ul>
+<li>
+<strong>albumSelected</strong> - Handler function for event raised when album is selecetd in the browser. Default value is <em>null</em>
+</li>
+<li>
+<strong>photoSelected</strong> - Handler function for event raised when photo is selecetd in the browser. Default value is <em>null</em>
+</li>
+</ul>
+
+<h3>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p><a href="http://plnkr.co/edit/bpcaagDgxVClt1lsDH5a?p=preview">Checkout demo on plunker</a></p>
+
+<p><img src="http://dejanstojanovic.net/media/31597/facebook-album-browser.png" alt="ScreenShot"></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/dejanstojanovic/Facebook-Album-Browser/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/dejanstojanovic/Facebook-Album-Browser/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/dejanstojanovic/Facebook-Album-Browser"></a> is maintained by <a href="https://github.com/dejanstojanovic">dejanstojanovic</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
